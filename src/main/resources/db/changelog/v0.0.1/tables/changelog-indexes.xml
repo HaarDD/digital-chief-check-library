@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="Maxim Galitskiy" id="fki_fk_books_authors-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="books" indexName="fki_fk_books_authors"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="fki_fk_books_authors" tableName="books" >
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Maxim Galitskiy" id="fki_fk_books_genres-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="books" indexName="fki_fk_books_genres"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="fki_fk_books_genres" tableName="books">
+            <column name="genre_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

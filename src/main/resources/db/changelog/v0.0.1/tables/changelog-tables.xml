@@ -1,0 +1,78 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="Maxim Galitskiy" id="genres-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="genres"/>
+            </not>
+        </preConditions>
+
+        <createSequence schemaName="public" cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="genres_id_seq" startValue="1"/>
+
+        <createTable schemaName="public" tableName="genres">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="genres_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="Maxim Galitskiy" id="authors-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authors"/>
+            </not>
+        </preConditions>
+
+        <createSequence schemaName="public" cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="authors_id_seq" startValue="1"/>
+
+        <createTable schemaName="public" tableName="authors">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authors_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date"/>
+            <column name="biography" type="VARCHAR(5000)"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="Maxim Galitskiy" id="books-1">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books"/>
+            </not>
+        </preConditions>
+
+        <createSequence schemaName="public" cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="books_id_seq" startValue="1"/>
+
+        <createTable schemaName="public" tableName="books">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="books_pkey"/>
+            </column>
+            <column name="title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(5000)"/>
+            <column name="pages_count" type="BIGINT"/>
+            <column name="publish_date" type="date"/>
+            <column name="author_id" type="BIGINT"/>
+            <column name="genre_id" type="BIGINT"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
