@@ -1,9 +1,33 @@
 services:
-  postgres:
+
+  app:
+    container_name: dc_app
+    build:
+      context: .
+    environment:
+      spring.datasource.driver-class-name: "org.postgresql.Driver"
+      spring.datasource.url: "jdbc:postgresql://dc_postgres:5432/digital_chief_check_library"
+      spring.datasource.username: "postgres"
+      spring.datasource.password: "test_password"
+      spring.datasource.hikari.schema: "public"
+    ports:
+      - '8092:8092'
+    depends_on:
+      - db
+
+  db:
+    container_name: dc_postgres
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: digital_chief_check_library
+      PGDATA: /data/postgres
+    volumes:
+      - db:/data/postgres
     ports:
-      - '5432'
+      - '62222:5432'
+    restart: unless-stopped
+
+volumes:
+  db:
