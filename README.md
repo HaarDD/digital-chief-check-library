@@ -1,6 +1,9 @@
 ## Дополнительные файлы
-1. **_Бизнес-модель сущностей_**: ./additional-files/ТЗ к тестовому заданию digital chief.docx
-2. **_Пакет запросов Postman_**: ./additional-files/DC_Library.postman_collection.json
+1. **_Бизнес-модель сущностей_**: ![DC_Library.postman_collection.json](https://github.com/HaarDD/digital-chief-check-library/blob/feature/rest/additional-files/DC_Library.postman_collection.json) 
+2. **_Пакет запросов Postman_**:
+   + Google – ТЗ к тестовому заданию digital chief.docx
+     https://docs.google.com/document/d/12c-vcGv2MyTJhftiwpEvj8BvTdy_TWiG/edit?usp=sharing&ouid=103874322013067777204&rtpof=true&sd=true
+   + ![GitHub – ТЗ к тестовому заданию digital chief.docx](https://github.com/HaarDD/digital-chief-check-library/blob/feature/rest/additional-files/%D0%A2%D0%97%20%D0%BA%20%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%BC%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8E%20digital%20chief.docx)
 
 ## Использованные зависимости:
 * **_spring-boot-starter-web_**: поддержка веб-приложений Spring Boot, включая REST
