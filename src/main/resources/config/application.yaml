@@ -1,0 +1,26 @@
+server:
+  port : 8092
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  datasource:
+    hikari:
+      leak-detection-threshold: 5000
+springdoc:
+  api-docs:
+    path: /public/v3/api-docs
+  swagger-ui:
+    path: /public/swagger-ui.html
+
+---
+server:
+  port : 8093
+spring:
+  config:
+    activate:
+      on-profile: no_docker
+    import: classpath:/config/database.yaml
